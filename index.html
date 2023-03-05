@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>check work hours and pc uptime</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+</style>
+</head>
+
+<body>
+<script src="src/script.js"></script>
+
+<h1>freeeの勤怠日時とLANSCOPEのPC稼働時間を比較します</h1>
+<br>
+
+<h2>１．チェックする日時の指定</h2>
+<p>
+＞＞開始日時　<input type="date" id="fromDay" min="2020-01-01" max="2030-12-31" required><br>
+＞＞終了日時　<input type="date" id="toDay" min="2020-01-01" max="2030-12-31" required><br>
+＞＞差分許容時間(分)　<input type="number" id="deltaMinutes" value="20" max="120" min="0"/><br>
+<br>
+</p>
+
+<h2>２．freeeの勤怠日時読み込み</h2>
+<p>
+freeeからダウンロードした勤怠日時CSVファイルを読み込みます<a href="/ref/freee_dl.html">（ダウンロード方法はこちら）</a><br>
+勤怠日時CSVファイルが可能されたフォルダを指定してください<br>
+</p>
+<p>　フォルダファイルサンプル　（フォルダ内には不要なファイルは含めないでください）</p>
+<pre class="hljs"><code><div>勤怠詳細_鈴木 一郎_2023_02.csv
+勤怠詳細_佐藤 二郎_2023_02.csv
+...
+</div></code></pre>
+＞＞freee勤怠日時CSVファイルフォルダ　<input type="file" id="workhours_directory" webkitdirectory directory /><br>
+<br><br>
+
+<h2>３．LANSCOPEのPCログ読み込み</h2>
+<p>LANSCOPEからダウンロードしたPCログCSVファイルを読み込みます<a href="/ref/lanscope_dl.html">（ダウンロード方法はこちら）</a><br>
+PCログCSVファイルが可能されたフォルダを指定してください</p>
+<p>　フォルダファイルサンプル　（フォルダ内には不要なファイルは含めないでください）</p>
+<pre class="hljs"><code><div>logs_001_20230201.csv
+logs_002_20230202.csv
+logs_003_20230215.csv
+...
+</div></code></pre>
+＞＞PCログCSVファイルフォルダ　<input type="file" id="pcuptime_directory" webkitdirectory directory /><br>
+<br><br>
+
+<h2>４．チェック実施</h2>
+<input type="button" id="check_button" value="実施" onclick="OnButtonClick()"/><br>
+<br><br>
+
+<p id="check_result"></p>
+</body>
+
+</html>
