@@ -421,13 +421,13 @@ function setCheckResult() {
     // result出力
     for (let i = 0; i < result_array.length; i++) {
         for (let j = 0; j < result_array[i].result.length; j++) {
-            console.log("[result] name:" + result_array[i].name +
-                " date:" + getDateString2(result_array[i].result[j].date) +
-                " result:" + result_array[i].result[j].result +
-                " work_begin_time:" + getDateFullString(result_array[i].result[j].work_begin_time) +
-                " work_finish_time:" + getDateFullString(result_array[i].result[j].work_finish_time) +
-                " pc_begin_time:" + getDateFullString(result_array[i].result[j].pc_begin_time) +
-                " pc_finish_time:" + getDateFullString(result_array[i].result[j].pc_finish_time));
+            //console.log("[result] name:" + result_array[i].name +
+            //    " date:" + getDateString2(result_array[i].result[j].date) +
+            //    " result:" + result_array[i].result[j].result +
+            //    " work_begin_time:" + getDateFullString(result_array[i].result[j].work_begin_time) +
+            //    " work_finish_time:" + getDateFullString(result_array[i].result[j].work_finish_time) +
+            //    " pc_begin_time:" + getDateFullString(result_array[i].result[j].pc_begin_time) +
+            //    " pc_finish_time:" + getDateFullString(result_array[i].result[j].pc_finish_time));
         }
     }
 
