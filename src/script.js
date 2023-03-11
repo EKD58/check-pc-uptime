@@ -77,11 +77,11 @@ const readFile = function (type, file) {
             file_read_count_workhours++;
             if (file_read_count_workhours >= files_workhours.length) {
                 // pcuptime読み込み開始
-                setTimeout(readFile, 1000, "pcuptime", files_pcuptime[file_read_count_pcuptime]);
+                setTimeout(readFile, 500, "pcuptime", files_pcuptime[file_read_count_pcuptime]);
                 return;
             }
             // workhours読み込み継続
-            setTimeout(readFile, 1000, "workhours", files_workhours[file_read_count_workhours]);
+            setTimeout(readFile, 500, "workhours", files_workhours[file_read_count_workhours]);
         }
         if (type === "pcuptime") {
             text_pcuptime.push(file_reader.result);
@@ -89,11 +89,11 @@ const readFile = function (type, file) {
             file_read_count_pcuptime++;
             if (file_read_count_pcuptime >= files_pcuptime.length) {
                 // result_array 初期値設定
-                setTimeout(setResultDefault, 1000);
+                setTimeout(setResultDefault, 500);
                 return;
             }
             // pcuptime読み込み継続
-            setTimeout(readFile, 1000, "pcuptime", files_pcuptime[file_read_count_pcuptime]);
+            setTimeout(readFile, 500, "pcuptime", files_pcuptime[file_read_count_pcuptime]);
         }
         return;
     }
@@ -173,7 +173,7 @@ const setResultDefault = function () {
         }
     }
 
-    setTimeout(setWorkhourstime, 1000);
+    setTimeout(setWorkhourstime, 500);
 
     return;
 }
@@ -277,7 +277,7 @@ const setWorkhourstime = function () {
         console.log(message);
         element_check_result.innerHTML = message;
     }
-    setTimeout(setPcUptime, 1000);
+    setTimeout(setPcUptime, 500);
     return;
 }
 
@@ -285,7 +285,7 @@ const setWorkhourstime = function () {
 const setPcUptimeLine = function (line, user_index) {
     let param_split = line.split(",");
 
-    if (param_split.length < 16) {
+    if (param_split.length < 10) {
         return;
     }
 
@@ -404,7 +404,7 @@ const setPcUptime = function () {
         }
     }
 
-    setTimeout(setCheckResult, 1000);
+    setTimeout(setCheckResult, 500);
 
     return;
 }
@@ -551,7 +551,7 @@ function OnButtonClick() {
     }
 
     // 勤怠読み込み開始
-    setTimeout(readFile, 1000, "workhours", files_workhours[0]);
+    setTimeout(readFile, 500, "workhours", files_workhours[0]);
 
     return;
 }
